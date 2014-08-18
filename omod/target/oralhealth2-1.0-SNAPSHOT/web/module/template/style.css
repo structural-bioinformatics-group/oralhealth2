@@ -1,0 +1,34 @@
+<style>
+.left{
+	float:left;
+	width:32%;
+}
+.middle{
+	float:left;
+	width:32%;
+}
+.right{
+	float:left;
+	width:31%;
+}
+.header{
+	float:left;
+	width:100%;
+}
+.second_left{
+	float:left;
+	width:32%;
+}
+.second_middle{
+	float:left;
+	width:32%;
+}
+.second_right{
+	float:left;
+	width:31%;
+}
+.dental{
+	float:left;
+	width:100%;
+}
+</style>
