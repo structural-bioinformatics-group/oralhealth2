@@ -13,11 +13,14 @@
  */
 package org.openmrs.module.oralhealth2.api.impl;
 
+import java.util.List;
+
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.module.oralhealth2.api.oralhealthmoduleService;
 import org.openmrs.module.oralhealth2.api.db.oralhealthmoduleDAO;
+import org.openmrs.module.oralhealth2.oralhealthmodule;
 
 /**
  * It is a default implementation of {@link oralhealthmoduleService}.
@@ -40,5 +43,25 @@ public class oralhealthmoduleServiceImpl extends BaseOpenmrsService implements o
      */
     public oralhealthmoduleDAO getDao() {
 	    return dao;
+    }
+    
+    @Override
+    public List<oralhealthmodule> getAllOralhealth() {
+    	return  dao.getAllOralhealth();
+    }
+    
+    @Override
+    public oralhealthmodule getOralhealth(Integer id) {
+    	return dao.getOralhealth(id);
+    }
+    
+    @Override
+    public oralhealthmodule saveOralhealth(oralhealthmodule oralhealth) {
+    	return dao.saveOralhealth(oralhealth);
+    }
+    
+    @Override
+    public void purgeOralhealth(oralhealthmodule oralhealth) {
+    	dao.purgeOralhealth(oralhealth);
     }
 }

@@ -13,10 +13,15 @@
  */
 package org.openmrs.module.oralhealth2.api.db.hibernate;
 
+import java.util.List;
+
+import org.openmrs.module.oralhealth2.oralhealthmodule;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
 import org.openmrs.module.oralhealth2.api.db.oralhealthmoduleDAO;
+import org.openmrs.module.oralhealth2.oralhealthmodule;
 
 /**
  * It is a default implementation of  {@link oralhealthmoduleDAO}.
@@ -39,4 +44,27 @@ public class HibernateoralhealthmoduleDAO implements oralhealthmoduleDAO {
     public SessionFactory getSessionFactory() {
 	    return sessionFactory;
     }
+    
+    @Override
+    public List<oralhealthmodule> getAllOralhealth() {
+    	return sessionFactory.getCurrentSession().createCriteria(oralhealthmodule.class).list();
+    }
+    
+    @Override
+    public oralhealthmodule getOralhealth(Integer id) {
+    	return (oralhealthmodule) sessionFactory.getCurrentSession().get(oralhealthmodule.class, id);
+    
+    }
+    
+    @Override
+    public oralhealthmodule saveOralhealth(oralhealthmodule oralhealth) {
+    	sessionFactory.getCurrentSession().save(oralhealth);
+    	return oralhealth;
+    }
+    
+    @Override
+    public void purgeOralhealth(oralhealthmodule oralhealth) {
+    	sessionFactory.getCurrentSession().delete(oralhealth);
+    }
+    
 }

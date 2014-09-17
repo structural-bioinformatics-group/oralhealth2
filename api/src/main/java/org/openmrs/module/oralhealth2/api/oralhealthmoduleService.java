@@ -13,8 +13,11 @@
  */
 package org.openmrs.module.oralhealth2.api;
 
+import java.util.List;
+
 import org.openmrs.api.OpenmrsService;
 import org.springframework.transaction.annotation.Transactional;
+import org.openmrs.module.oralhealth2.oralhealthmodule;
 
 /**
  * This service exposes module's core functionality. It is a Spring managed bean which is configured in moduleApplicationContext.xml.
@@ -33,4 +36,13 @@ public interface oralhealthmoduleService extends OpenmrsService {
 	 * Add service methods here
 	 * 
 	 */
+	@Transactional(readOnly=true)
+	List<oralhealthmodule> getAllOralhealth();
+	
+	@Transactional(readOnly=true)
+	oralhealthmodule getOralhealth(Integer id);
+	
+	oralhealthmodule saveOralhealth(oralhealthmodule oralhealth);
+	
+	void purgeOralhealth(oralhealthmodule oralhealth);
 }

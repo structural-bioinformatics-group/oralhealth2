@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
  
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -9,4 +9,98 @@
         for a list of supported elements and attributes
     -->
     
+    <changeSet author="Test" id="20142008-2">
+     <comment> Add all the alterations </comment>
+     <createTable tableName="oralhealthmodule_v_oralhealth2">
+     	<column autoIncrement="true" name="id" type="int">
+     		<constraints primaryKey="true" nullable="false" />
+     	</column>
+     	<column name="patientName" type="varchar(255)" />
+		<column name="examinationDate" type="varchar(255)" />
+		<column name="doctorName" type="varchar(255)" />
+		<column name="birthdate" type="varchar(255)" />
+		<column name="city" type="varchar(255)" />
+		<column name="placeOfResidence" type="varchar(255)" />
+		<column name="psi_18_14" type="int" />
+		<column name="psi_13_23" type="int" />
+		<column name="psi_24_28" type="int" />
+		<column name="psi_48_44" type="int" />
+		<column name="psi_43_33" type="int" />
+		<column name="psi_34_48" type="int" />
+		<column name="treatment_18" type="varchar(6)" />
+		<column name="treatment_17" type="varchar(6)" />
+		<column name="treatment_16" type="varchar(6)" />
+		<column name="treatment_14" type="varchar(6)" />
+		<column name="treatment_13" type="varchar(6)" />
+		<column name="treatment_12" type="varchar(6)" />
+		<column name="treatment_11" type="varchar(6)" />
+		<column name="treatment_21" type="varchar(6)" />
+		<column name="treatment_22" type="varchar(6)" />
+		<column name="treatment_23" type="varchar(6)" />
+		<column name="treatment_24" type="varchar(6)" />
+		<column name="treatment_25" type="varchar(6)" />
+		<column name="treatment_26" type="varchar(6)" />
+		<column name="treatment_27" type="varchar(6)" />
+		<column name="treatment_28" type="varchar(6)" />
+		<column name="treatment_48" type="varchar(6)" />
+		<column name="treatment_47" type="varchar(6)" />
+		<column name="treatment_46" type="varchar(6)" />
+		<column name="treatment_45" type="varchar(6)" />
+		<column name="treatment_44" type="varchar(6)" />
+		<column name="treatment_43" type="varchar(6)" />
+		<column name="treatment_42" type="varchar(6)" />
+		<column name="treatment_41" type="varchar(6)" />
+		<column name="treatment_31" type="varchar(6)" />
+		<column name="treatment_32" type="varchar(6)" />
+		<column name="treatment_33" type="varchar(6)" />
+		<column name="treatment_34" type="varchar(6)" />
+		<column name="treatment_35" type="varchar(6)" />
+		<column name="treatment_36" type="varchar(6)" />
+		<column name="treatment_37" type="varchar(6)" />
+		<column name="treatment_38" type="varchar(6)" />
+		<column name="status_18" type="varchar(6)" />
+		<column name="status_17" type="varchar(6)" />
+		<column name="status_16" type="varchar(6)" />
+		<column name="status_14" type="varchar(6)" />
+		<column name="status_13" type="varchar(6)" />
+		<column name="status_12" type="varchar(6)" />
+		<column name="status_11" type="varchar(6)" />
+		<column name="status_21" type="varchar(6)" />
+		<column name="status_22" type="varchar(6)" />
+		<column name="status_23" type="varchar(6)" />
+		<column name="status_24" type="varchar(6)" />
+		<column name="status_25" type="varchar(6)" />
+		<column name="status_26" type="varchar(6)" />
+		<column name="status_27" type="varchar(6)" />
+		<column name="status_28" type="varchar(6)" />
+		<column name="status_48" type="varchar(6)" />
+		<column name="status_47" type="varchar(6)" />
+		<column name="status_46" type="varchar(6)" />
+		<column name="status_45" type="varchar(6)" />
+		<column name="status_44" type="varchar(6)" />
+		<column name="status_43" type="varchar(6)" />
+		<column name="status_42" type="varchar(6)" />
+		<column name="status_41" type="varchar(6)" />
+		<column name="status_31" type="varchar(6)" />
+		<column name="status_32" type="varchar(6)" />
+		<column name="status_33" type="varchar(6)" />
+		<column name="status_34" type="varchar(6)" />
+		<column name="status_35" type="varchar(6)" />
+		<column name="status_36" type="varchar(6)" />
+		<column name="status_37" type="varchar(6)" />
+		<column name="status_38" type="varchar(6)" />
+		<column name="lips" type="varchar(255)" />
+		<column name="gum" type="varchar(255)" />
+		<column name="known_diseases" type="varchar(255)" />
+		<column name="hard_palate" type="varchar(255)" />
+		<column name="tonsil" type="varchar(255)" />
+		<column name="drugs" type="varchar(255)" />
+		<column name="soft_palate" type="varchar(255)" />
+		<column name="tongue" type="varchar(255)" />
+		<column name="uvula" type="varchar(255)" />
+		<column name="other_notices" type="varchar(255)" />
+		<column name="smoking" type="int" />
+     	
+     </createTable>
+    </changeSet>
 </databaseChangeLog>

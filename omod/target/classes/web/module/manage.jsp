@@ -4,55 +4,12 @@
 <%@ include file="template/localHeader.jsp"%>
 <%@ include file="template/style.css" %>
 
-<script>
-
-function submit_func(){
-
-//exec("python /home/praktikant/oralhealth2/script/db_connect.py");
-
-//$.ajax({
-//   url: "/home/praktikant/oralhealth2/script/db_connect.py",
-//   success: function(response){
-     //here you do whatever you want with the response variable
-//)   }
-//});
-	
-//$.ajax({
-//	  type: "POST",
-//	  url: "/home/praktikant/oralhealth2/script/db_connect.py",
-	  //data: { param: text}
-//	});//.done(function( o ) {
-	   // do something
-	//});
-	
-alert("foobar!");
-
-
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "/home/praktikant/oralhealth2/script/db_connect.py", true);
-xhr.responseType = "JSON";
-xhr.onload = function(e) {
-  var arrOfStrings = JSON.parse(xhr.response);
-  for (int i =0; i < arrOfStrings.length; i++){
-	  alert(arrOfStrings[i]);
-	  
-  }
-}
-xhr.send();
-	
-	
-	
-}
-
-</script> <!-- doesn't seem to work D: -->
-
 
 <openmrs:htmlInclude file="/scripts/calendar/calendar.js" />
 
 <html>
-<!-- <head>
-	<script type="text/javascript" src="MySQLConnection.js"></script>
-</head> -->
+ <head>
+</head>
 <body>
 <htmlform>
 <style>@media print {
@@ -72,25 +29,40 @@ table{border-collapse:collapse}
 
 <fieldset style="width:1115px;">
 <div class="left">
-    <label for="patientname">PATIENT NAME </label><br/>
-    <input id="patientname" type="text" name="patientname" size="30" /><br />
+	<spring:bind path="oralhealth2.patientName">
+    <label for="patientName">PATIENT NAME </label><br/>
+    <input id="patientName" type="text" name="patientName" value="${status.value}" size="30" /><br />
+      <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+    </spring:bind>
+    <spring:bind path="oralhealth2.birthdate">
     <label for="birthdate">BIRTHDATE </label><br/>
-    <input id="birthdate" type="text" name="birthdate" size="30" onClick="showCalendar(this)"/><br />
-    <label for="residence">PLACE OF RESIDENCE </label><br/>
-    <input id="residence" type="text" name="residence" size="30" />
+    <input id="birthdate" type="text" name="birthdate" value="${status.value}" size="30" onClick="showCalendar(this)"/><br />
+      <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+    </spring:bind>
+    <spring:bind path="oralhealth2.placeOfResidence">
+    <label for="placeOfResidence">PLACE OF RESIDENCE </label><br/>
+    <input id="placeOfResidence" type="text" name="residence" value="${status.value}" size="30" />
+    <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+    </spring:bind>
  </div>
  
  <div class="middle">
-    <label for="date">EXAMINATION DATE </label><br/>
-    <input id="date" type="text" name="date" size="30" onClick="showCalendar(this)"/><br/>
+ 	<spring:bind path="oralhealth2.examinationDate">
+    <label for="examinationDate">EXAMINATION DATE </label><br/>
+    <input id="examinationDate" type="text" name="examinationDate" size="30" onClick="showCalendar(this)"/><br/>
+    </spring:bind>
+    <spring:bind path="oralhealth2.city">
     <label for="city">CITY: </label><br/>
     <input id="city" type="text" name="city" size="30" />
+    </spring:bind>
  </div>
  
  <div class="right">
- 	 <label for="name">DOCTOR NAME </label><br/>
-    <input id="name" type="text" name="name" size="30" /><br />
-    <label for="signature">SIGNATURE</label><br/><br/><br/> 
+ 	<spring:bind path="oralhealth2.doctorName">
+ 	<label for="doctorName">DOCTOR NAME </label><br/>
+    <input id="doctorName" type="text" name="doctorName" size="30" /><br />
+    <label for="signature">SIGNATURE</label><br/><br/><br/>
+    </spring:bind> 
     <hr>
  </div>
 </fieldset>
@@ -107,37 +79,43 @@ table{border-collapse:collapse}
 				</td>
 				<td colspan="5" style="text-align: center;">
 					<span style="font-size:10px;"><a title="PSI for teeth 18 to 14: Code 0(GOOD/HEALTHY)... Code4(BAD/ILL)">PSI 18-14_</a>
-					<select conceptId="6124" id="treat_18-13" defaultValue="6119">
+					<spring:bind path="oralhealth2.psi_18_14">
+					<select conceptId="6124" id="psi_18-14" defaultValue="6119">
 		           		<option>0</option>
                    		<option>1</option>
                    		<option>2</option> 
                    		<option>3</option>
                    		<option>4</option>
                    	</select>
+                   	</spring:bind>
                    	</span>
 					<p><span style="font-size:10px;"></span></p>
 				</td>
 				<td colspan="6" style="text-align: center;">
 					<span style="font-size:10px;"><a title="PSI for teeth 13 to 23: Code 0(GOOD/HEALTHY)... Code4(BAD/ILL)">PSI 13-23_</a>
-					<select conceptId="6125" id="treat_12-23" defaultValue="6119">
+					<spring:bind path="oralhealth2.psi_13_23">
+					<select conceptId="6125" id="psi_12-23" defaultValue="6119">
 						<option>0</option>
 						<option>1</option>
 						<option>2</option> 
 						<option>3</option>
 						<option>4</option>
 					</select>
+					</spring:bind>
 					</span>
 					<p><span style="font-size:10px;"></span></p>
 				</td>
 				<td colspan="5" style="text-align: center;">
 					<span style="font-size:10px;"><a title="PSI for teeth 24 to 28: Code 0(GOOD/HEALTHY)... Code4(BAD/ILL)">PSI 24-28_</a>
-					<select conceptId="6126" id="treat_24-28" defaultValue="6119">
+					<spring:bind path="oralhealth2.psi_24_28">
+					<select conceptId="6126" id="psi_24-28" defaultValue="6119">
 						<option>0</option>
 						<option>1</option>
 						<option>2</option> 
 						<option>3</option>
 						<option>4</option>
 					</select>
+					</spring:bind>
 					</span>
 					<p><span style="font-size:10px;"></span></p>
 				</td>
@@ -524,7 +502,7 @@ table{border-collapse:collapse}
 			</tr>
 			<tr>
 				<td rowspan="2"><span style="font-size:10px;">PERMANENT TEETH</span></td>
-				<td style="text-align: center; border-bottom-width: medium; border-style:solid; ">
+				<td style="background-image:url(${pageContext.request.contextPath}/moduleResources/oralhealth2/tooth.png); background-size: 100% 100%; background-repeat:no-repeat;">
 					<span style="font-size:10px;">18</span></td>
 				<td style="text-align: center; border-bottom-width: medium; border-style:solid; ">
 					<p style="text-align: center;"><span style="font-size:10px;">17</span></p>
@@ -877,36 +855,44 @@ table{border-collapse:collapse}
 				<td><span style="font-size:10px;">PSI*</span></td>
 				<td colspan="5" style="text-align: center;">
 					<span style="font-size:10px;"><a title="PSI for teeth 48 to 44: Code 0(GOOD/HEALTHY)... Code4(BAD/ILL)">PSI 48-44_</a>
-					<select conceptId="6127" id="treat_48-44" defaultValue="6119">
+					<spring:bind path="oralhealth2.psi_48_44">
+					<select conceptId="6127" id="psi_48_44" defaultValue="6119">
 						<option>0</option>
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
 						<option>4</option>
 					</select>
+					</spring:bind>
 					</span>
 					<p><span style="font-size:10px;"></span></p>
 				</td>
 				<td colspan="6" style="text-align: center;">
 					<span style="font-size:10px;"><a title="PSI for teeth 43 to 33: Code 0(GOOD/HEALTHY)... Code4(BAD/ILL)">PSI 43-33_</a>
-					<select conceptId="6128" id="treat_43-33" defaultValue="6119">
+					<spring:bind path="oralhealth2.psi_43_33">
+					<select conceptId="6128" id="psi_43_33" defaultValue="6119">
 						<option>0</option>
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
 						<option>4</option>
-					</select></span>
+					</select>
+					</spring:bind>
+					</span>
 					<p><span style="font-size:10px;"></span></p>
 				</td>
 				<td colspan="5" style="text-align: center;">
 					<span style="font-size:10px;"><a title="PSI for teeth 34 to 38: Code 0(GOOD/HEALTHY)... Code4(BAD/ILL)">PSI 34-38_</a>
-					<select conceptId="6129" id="treat_34-38" defaultValue="6119">
+					<spring:bind path="oralhealth2.psi_34_38">
+					<select conceptId="6129" id="psi_34_38" defaultValue="6119">
 						<option>0</option>
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
 						<option>4</option>
-					</select></span>
+					</select>
+					</spring:bind>
+					</span>
 					<p><span style="font-size:10px;"></span></p>
 				</td>
 			</tr>
@@ -932,40 +918,63 @@ table{border-collapse:collapse}
 </div>
 <div class="second_left">
 	<label for="lips">LIPS</label><br/>
-	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea cols="30" rows="3"></textarea></a><br/>
+	<spring:bind path="oralhealth2.lips">
+	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea name="lips" cols="30" rows="3"></textarea></a><br/>
+	</spring:bind>
 	<label for="hard palate">HARD PALATE</label><br/>
-	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea cols="30" rows="3"></textarea></a><br/>
+	<spring:bind path="oralhealth2.hard_palate">
+	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea name="hard_palate" cols="30" rows="3"></textarea></a><br/>
+	</spring:bind>
 	<label for="soft palate">SOFT PALATE</label><br/>
-	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea cols="30" rows="3"></textarea></a><br/>
+	<spring:bind path="oralhealth2.soft_palate">
+	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea name="soft_palate" cols="30" rows="3"></textarea></a><br/>
+	</spring:bind>
 	<label for="uvula">UVULA</label><br/>
-	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea cols="30" rows="3"></textarea></a><br/>
+	<spring:bind path="oralhealth2.uvula">
+	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea name="uvula" cols="30" rows="3"></textarea></a><br/>
+	</spring:bind>
 </div>
 
 <div class="second_middle">
 	<label for="gum">GUM</label><br/>
-	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea cols="30" rows="3"></textarea></a><br/>
+	<spring:bind path="oralhealth2.gum">
+	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea name="gum" cols="30" rows="3"></textarea></a><br/>
+	</spring:bind>
 	<label for="tonsil">TONSIL</label><br/>
-	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea cols="30" rows="3"></textarea></a><br/>
+	<spring:bind path="oralhealth2.tonsil">
+	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea name="tonsil" cols="30" rows="3"></textarea></a><br/>
+	</spring:bind>
 	<label for="tongue">TONGUE</label><br/>
-	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea cols="30" rows="3"></textarea></a><br/>
+	<spring:bind path="oralhealth2.tongue">
+	<a class="infobox" title="INFO: e.g. healthy, ill,..."><textarea name="tongue" cols="30" rows="3"></textarea></a><br/>
+	</spring:bind>
 	<label for="other notices">OTHER NOTICES</label>
-	<textarea cols="30" rows="3"></textarea>
+	<spring:bind path="oralhealth2.other_notices">
+	<textarea name="other_notices" cols="30" rows="3"></textarea>
+	</spring:bind>
 </div>
 
 <div class="second_right">
 	<label for="knows diseases">KNOWN DISEASES</label><br/>
-	<textarea cols="30" rows="3" maxlength="30"></textarea><br/>
+	<spring:bind path="oralhealth2.known_diseases">
+	<textarea name="known_diseases" cols="30" rows="3" maxlength="30"></textarea><br/>
+	</spring:bind>
 	<label for="drugs">DRUGS</label><br/>
+	<spring:bind path="oralhealth2.drugs">
 	<textarea cols="30" rows ="3" maxlength="30"></textarea><br/>
+	</spring:bind>
 	<label for="SMOKING">SMOKING</label><br/>
-	<select conceptId="6375" id="SMOKING">
+	<spring:bind path="oralhealth2.smoking">
+	<select conceptId="6375" id="smoking">
 		<option>No</option>
 		<option>More than 15/d</option>
 		<option>Less than 15/d</option>
 	</select>
+	</spring:bind>
 </div>
+	<input type="submit" value="<openmrs:message code="oralhealt2.save"/>" name="save"> 
 </fieldset>
-	<input type="button" value="Submit" onClick="submit_func()"/>
+	<!--   <input type="button" value="Submit" onClick="submit_func()"/> -->
 </form>
 </htmlform>
 </body>

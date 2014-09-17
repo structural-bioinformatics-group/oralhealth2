@@ -4,55 +4,12 @@
 <%@ include file="template/localHeader.jsp"%>
 <%@ include file="template/style.css" %>
 
-<script>
-
-function submit_func(){
-
-//exec("python /home/praktikant/oralhealth2/script/db_connect.py");
-
-//$.ajax({
-//   url: "/home/praktikant/oralhealth2/script/db_connect.py",
-//   success: function(response){
-     //here you do whatever you want with the response variable
-//)   }
-//});
-	
-//$.ajax({
-//	  type: "POST",
-//	  url: "/home/praktikant/oralhealth2/script/db_connect.py",
-	  //data: { param: text}
-//	});//.done(function( o ) {
-	   // do something
-	//});
-	
-alert("foobar!");
-
-
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "/home/praktikant/oralhealth2/script/db_connect.py", true);
-xhr.responseType = "JSON";
-xhr.onload = function(e) {
-  var arrOfStrings = JSON.parse(xhr.response);
-  for (int i =0; i < arrOfStrings.length; i++){
-	  alert(arrOfStrings[i]);
-	  
-  }
-}
-xhr.send();
-	
-	
-	
-}
-
-</script>
-
 
 <openmrs:htmlInclude file="/scripts/calendar/calendar.js" />
 
 <html>
-<!-- <head>
-	<script type="text/javascript" src="MySQLConnection.js"></script>
-</head> -->
+ <head>
+</head>
 <body>
 <htmlform>
 <style>@media print {
@@ -72,12 +29,21 @@ table{border-collapse:collapse}
 
 <fieldset style="width:1115px;">
 <div class="left">
-    <label for="patientname">PATIENT NAME </label><br/>
-    <input id="patientname" type="text" name="patientname" size="30" /><br />
+	<spring:bind path="oralhealth2.patientName">
+    <label for="patientName">PATIENT NAME </label><br/>
+    <input id="patientName" type="text" name="patientName" value="${status.value}" size="30" /><br />
+      <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+    </spring:bind>
+    <spring:bind path="oralhealth2.birthdate">
     <label for="birthdate">BIRTHDATE </label><br/>
-    <input id="birthdate" type="text" name="birthdate" size="30" onClick="showCalendar(this)"/><br />
-    <label for="residence">PLACE OF RESIDENCE </label><br/>
-    <input id="residence" type="text" name="residence" size="30" />
+    <input id="birthdate" type="text" name="birthdate" value="${status.value}" size="30" onClick="showCalendar(this)"/><br />
+      <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+    </spring:bind>
+    <spring:bind path="oralhealth2.placeOfResidence">
+    <label for="placeOfResidence">PLACE OF RESIDENCE </label><br/>
+    <input id="placeOfResidence" type="text" name="residence" value="${status.value}" size="30" />
+    <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+    </spring:bind>
  </div>
  
  <div class="middle">
@@ -524,7 +490,7 @@ table{border-collapse:collapse}
 			</tr>
 			<tr>
 				<td rowspan="2"><span style="font-size:10px;">PERMANENT TEETH</span></td>
-				<td style="text-align: center; border-bottom-width: medium; border-style:solid; ">
+				<td style="background-image:url(${pageContext.request.contextPath}/moduleResources/oralhealth2/tooth.png); background-size: 100% 100%; background-repeat:no-repeat;">
 					<span style="font-size:10px;">18</span></td>
 				<td style="text-align: center; border-bottom-width: medium; border-style:solid; ">
 					<p style="text-align: center;"><span style="font-size:10px;">17</span></p>
@@ -964,8 +930,9 @@ table{border-collapse:collapse}
 		<option>Less than 15/d</option>
 	</select>
 </div>
+	<input type="submit" value="<openmrs:message code="oralhealt2.save"/>" name="save"> 
 </fieldset>
-	<input type="button" value="Submit" onClick="submit_func()"/>
+	<!--   <input type="button" value="Submit" onClick="submit_func()"/> -->
 </form>
 </htmlform>
 </body>

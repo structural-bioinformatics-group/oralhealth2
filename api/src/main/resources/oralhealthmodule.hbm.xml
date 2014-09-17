@@ -1,20 +1,102 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <!DOCTYPE hibernate-mapping PUBLIC
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
 <hibernate-mapping package="org.openmrs.module.oralhealth2">
 
-<!--
 	<class name="oralhealthmodule"
 		table="${project.parent.artifactId}_oralhealthmodule">
 		<id name="id" type="int" column="id" unsaved-value="0">
 			<generator class="native" />
 		</id>
 		<discriminator column="id" insert="false" />
-		<property name="uuid" type="java.lang.String" column="uuid"
-			length="38" unique="true" />
+		<property name="patientName" type="java.lang.String" column="patientName" />
+		<property name="examinationDate" type="java.util.Date" column="examinationDate" />
+		<property name="doctorName" type="java.lang.String" column="doctorName" />
+		<property name="birthdate" type="java.util.Date" column="birthdate" />
+		<property name="city" type="java.lang.String" column="city" />
+		<property name="placeOfResidence" type="java.lang.String" column="placeOfResidence" />
+		<property name="psi_18_14" type="java.lang.Integer" column="psi_18_14" />
+		<property name="psi_13_23" type="java.lang.Integer" column="psi_13_23" />
+		<property name="psi_24_28" type="java.lang.Integer" column="psi_24_28" />
+		<property name="psi_48_44" type="java.lang.Integer" column="psi_48_44" />
+		<property name="psi_43_33" type="java.lang.Integer" column="psi_43_33" />
+		<property name="psi_34_48" type="java.lang.Integer" column="psi_34_48" />
+		<property name="treatment_18" type="java.lang.String" column="treatment_18" />
+		<property name="treatment_17" type="java.lang.String" column="treatment_17" />
+		<property name="treatment_16" type="java.lang.String" column="treatment_16" />
+		<property name="treatment_14" type="java.lang.String" column="treatment_14" />
+		<property name="treatment_13" type="java.lang.String" column="treatment_13" />
+		<property name="treatment_12" type="java.lang.String" column="treatment_12" />
+		<property name="treatment_11" type="java.lang.String" column="treatment_11" />
+		<property name="treatment_21" type="java.lang.String" column="treatment_21" />
+		<property name="treatment_22" type="java.lang.String" column="treatment_22" />
+		<property name="treatment_23" type="java.lang.String" column="treatment_23" />
+		<property name="treatment_24" type="java.lang.String" column="treatment_24" />
+		<property name="treatment_25" type="java.lang.String" column="treatment_25" />
+		<property name="treatment_26" type="java.lang.String" column="treatment_26" />
+		<property name="treatment_27" type="java.lang.String" column="treatment_27" />
+		<property name="treatment_28" type="java.lang.String" column="treatment_28" />
+		<property name="treatment_48" type="java.lang.String" column="treatment_48" />
+		<property name="treatment_47" type="java.lang.String" column="treatment_47" />
+		<property name="treatment_46" type="java.lang.String" column="treatment_46" />
+		<property name="treatment_45" type="java.lang.String" column="treatment_45" />
+		<property name="treatment_44" type="java.lang.String" column="treatment_44" />
+		<property name="treatment_43" type="java.lang.String" column="treatment_43" />
+		<property name="treatment_42" type="java.lang.String" column="treatment_42" />
+		<property name="treatment_41" type="java.lang.String" column="treatment_41" />
+		<property name="treatment_31" type="java.lang.String" column="treatment_31" />
+		<property name="treatment_32" type="java.lang.String" column="treatment_32" />
+		<property name="treatment_33" type="java.lang.String" column="treatment_33" />
+		<property name="treatment_34" type="java.lang.String" column="treatment_34" />
+		<property name="treatment_35" type="java.lang.String" column="treatment_35" />
+		<property name="treatment_36" type="java.lang.String" column="treatment_36" />
+		<property name="treatment_37" type="java.lang.String" column="treatment_37" />
+		<property name="treatment_38" type="java.lang.String" column="treatment_38" />
+		<property name="status_18" type="java.lang.String" column="status_18" />
+		<property name="status_17" type="java.lang.String" column="status_17" />
+		<property name="status_16" type="java.lang.String" column="status_16" />
+		<property name="status_14" type="java.lang.String" column="status_14" />
+		<property name="status_13" type="java.lang.String" column="status_13" />
+		<property name="status_12" type="java.lang.String" column="status_12" />
+		<property name="status_11" type="java.lang.String" column="status_11" />
+		<property name="status_21" type="java.lang.String" column="status_21" />
+		<property name="status_22" type="java.lang.String" column="status_22" />
+		<property name="status_23" type="java.lang.String" column="status_23" />
+		<property name="status_24" type="java.lang.String" column="status_24" />
+		<property name="status_25" type="java.lang.String" column="status_25" />
+		<property name="status_26" type="java.lang.String" column="status_26" />
+		<property name="status_27" type="java.lang.String" column="status_27" />
+		<property name="status_28" type="java.lang.String" column="status_28" />
+		<property name="status_48" type="java.lang.String" column="status_48" />
+		<property name="status_47" type="java.lang.String" column="status_47" />
+		<property name="status_46" type="java.lang.String" column="status_46" />
+		<property name="status_45" type="java.lang.String" column="status_45" />
+		<property name="status_44" type="java.lang.String" column="status_44" />
+		<property name="status_43" type="java.lang.String" column="status_43" />
+		<property name="status_42" type="java.lang.String" column="status_42" />
+		<property name="status_41" type="java.lang.String" column="status_41" />
+		<property name="status_31" type="java.lang.String" column="status_31" />
+		<property name="status_32" type="java.lang.String" column="status_32" />
+		<property name="status_33" type="java.lang.String" column="status_33" />
+		<property name="status_34" type="java.lang.String" column="status_34" />
+		<property name="status_35" type="java.lang.String" column="status_35" />
+		<property name="status_36" type="java.lang.String" column="status_36" />
+		<property name="status_37" type="java.lang.String" column="status_37" />
+		<property name="status_38" type="java.lang.String" column="status_38" />
+		<property name="lips" type="java.lang.String" column="lips" />
+		<property name="gum" type="java.lang.String" column="gum" />
+		<property name="known_diseases" type="java.lang.String" column="known_diseases" />
+		<property name="hard_palate" type="java.lang.String" column="hard_palate" />
+		<property name="tonsil" type="java.lang.String" column="tonsil" />
+		<property name="drugs" type="java.lang.String" column="drugs" />
+		<property name="soft_palate" type="java.lang.String" column="soft_palate" />
+		<property name="tongue" type="java.lang.String" column="tongue" />
+		<property name="uvula" type="java.lang.String" column="uvula" />
+		<property name="other_notices" type="java.lang.String" column="other_notices" />
+		<property name="smoking" type="java.lang.Integer" column="smoking" />
 	</class>
--->
+
 
 </hibernate-mapping>

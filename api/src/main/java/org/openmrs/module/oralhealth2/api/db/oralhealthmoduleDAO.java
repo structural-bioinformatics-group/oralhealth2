@@ -13,14 +13,26 @@
  */
 package org.openmrs.module.oralhealth2.api.db;
 
+import java.util.List;
+
+import org.openmrs.module.oralhealth2.oralhealthmodule;
 import org.openmrs.module.oralhealth2.api.oralhealthmoduleService;
 
 /**
  *  Database methods for {@link oralhealthmoduleService}.
  */
 public interface oralhealthmoduleDAO {
+
+	List<oralhealthmodule> getAllOralhealth();
+
+	oralhealthmodule getOralhealth(Integer id);
+	
+	oralhealthmodule saveOralhealth(oralhealthmodule oralhealth);
+	
+	void purgeOralhealth(oralhealthmodule oralhealth);
 	
 	/*
 	 * Add DAO methods here
 	 */
+	
 }
